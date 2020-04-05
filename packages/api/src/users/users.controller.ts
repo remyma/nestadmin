@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
-import {ApiTags} from "@nestjs/swagger";
-import {User} from "./user.entity";
-import {Crud} from "@nestjsx/crud";
+import { Crud } from '@nestjsx/crud';
+import {User} from './user.entity';
+import {UsersService} from './users.service';
 
 @Crud({
   model: {
@@ -9,5 +9,6 @@ import {Crud} from "@nestjsx/crud";
   },
 })
 @Controller('users')
-@ApiTags('users')
-export class UsersController {}
+export class UsersController {
+  constructor(public service: UsersService) {}
+}

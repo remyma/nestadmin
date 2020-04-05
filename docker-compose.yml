@@ -1,0 +1,19 @@
+version: '3.1'
+
+networks:
+  nestadmin:
+
+services:
+  db:
+    image: postgres:11
+    restart: always
+    volumes:
+      - ./docker/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 5434:5432
+    environment:
+      DB_USER: nestadmin
+      DB_PASSWORD: nestadmin
+      DB_NAME: nestadmin
+    networks:
+      - nestadmin
